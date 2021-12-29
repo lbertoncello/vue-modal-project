@@ -9,12 +9,25 @@
         <a href="#">More info</a>
       </template>
       <!-- Default slot -->
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <h1>Sign up for the Giveaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
 
     </Modal>
   </div>
+  <div v-if="showModalTwo">
+    <Modal theme="dark" @close="toggleModalTwo">
+      <template v-slot:links>
+        <a href="#">Topic 1</a>
+        <a href="#">Topic 2</a>
+      </template>
+      <div>
+        <h1>Here you can check out some informations</h1>
+        <p>You just need to choose the topic which you want to know more about</p>
+      </div>
+    </Modal>
+  </div>
   <button @click.alt="toggleModal">Open Modal (alt)</button>
+  <button @click.shift="toggleModalTwo">Open Modal (shift)</button>
 </template>
 
 <script>
@@ -28,14 +41,16 @@ export default {
   data() {
     return {
       title: 'My First Vue App :)',
-      header: 'Sign up for the Giveaway!',
-      text: 'Grab your ninja swag for half price!',
-      showModal: false
+      showModal: false,
+      showModalTwo: false
     }
   },
   methods: {
     toggleModal() {
       this.showModal = !this.showModal
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
