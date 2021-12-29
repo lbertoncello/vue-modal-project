@@ -1,11 +1,17 @@
 <template>
   <div class="backdrop">
-    <div class="modal">
-      <h1>Modal title</h1>
-      <p>Modal content</p>
+    <div class="modal" :class="{ sale: theme === 'sale', dark: theme === 'dark' }">
+      <h1>{{ header }}</h1>
+      <p>{{ text }}</p>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: [ 'header', 'text', 'theme' ],
+}
+</script>
 
 <!-- scoped causes all styles to be applied only to the specified component -->
 <style scoped>
@@ -27,5 +33,21 @@
     color: #03cfb4;
     border: none;
     padding: 0;
+  }
+
+  .modal.sale {
+    background: crimson;
+    color: white;
+  }
+  .modal.sale h1 {
+    color: white;
+  }
+
+  .modal.dark {
+    background: #000;
+    color: white;
+  }
+  .modal.dark h1 {
+    color: white;
   }
 </style>
