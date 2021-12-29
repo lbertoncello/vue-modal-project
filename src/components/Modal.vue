@@ -1,5 +1,9 @@
 <template>
-  <div class="backdrop" @click="closeModal">
+  <!-- 
+    Modifies the click event to be triggered only when the element itself is clicked.
+    That means that the click event will not be triggered when a child element is clicked.
+  -->
+  <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale', dark: theme === 'dark' }">
       <h1>{{ header }}</h1>
       <p>{{ text }}</p>
